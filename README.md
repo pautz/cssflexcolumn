@@ -14,16 +14,40 @@ Neste exemplo, configuramos o container para usar `flex-direction: column` e con
 <div class="container">
   <div class="box box1">Caixa 1</div>
   <div class="box box2">Caixa 2</div>
+ 
   <div class="box box3">Caixa 3</div>
-  <div class="box box4">Caixa 4</div>
-</div>
-<style>
-.container {
+  </div>
+   <div class="containercolumn">
+       <div class="containerrow">
+  <div class="box box4">Caixa 4</div></div></div>
+
+<style>.container {
   display: flex;
-  flex-direction: column; /* eixo principal = Y */
-  align-items: flex-start; /* alinha no início do eixo X */
-  height: 600px;          /* altura total do container */
-  background: #222;       /* fundo escuro */
+  flex-direction: row; /* organiza em linha */
+  align-items: flex-start;
+  height: 600px;
+  background: #222;
+  padding: 10px;
+  gap: 10px;
+}
+
+.containerrow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 600px;
+  width: 100%;
+  background: #222;
+  padding: 10px;
+  gap: 10px;
+}
+
+.containercolumn {
+  display: flex;
+  flex-direction: column; /* organiza em coluna */
+  align-items: flex-start;
+  height: 600px;
+  background: #333;
   padding: 10px;
   gap: 10px;
 }
@@ -35,11 +59,12 @@ Neste exemplo, configuramos o container para usar `flex-direction: column` e con
   justify-content: center;
   border-radius: 6px;
   font-weight: bold;
-  width: 120px; /* largura fixa para visualizar o alinhamento */
+  flex: 1;          /* cada box ocupa espaço proporcional */
+  min-width: 0;     /* evita overflow do conteúdo */
 }
 
-.box1 { background: crimson; flex: 0; }
-.box2 { background: teal; flex: 0; }
-.box3 { background: goldenrod; flex: 0; }
-.box4 { background: purple; flex: 1; } /* ocupa todo eixo Y */
+.box1 { background: crimson; }
+.box2 { background: teal; }
+.box3 { background: goldenrod; }
+.box4 { background: purple; } /* ocupa toda largura disponível */
 </style>
